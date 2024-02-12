@@ -34,9 +34,13 @@ This is a message from news-api-email
 
 
 def set_email_content(news: dict = None):
-    if news:
-        message = f"""\
+    message = f"""\
 Subject: Technology news"""
+
+    if news:
+        for article in news:
+            message = message + '\n' + "Tytuł: " + article['title']
+            message = message + '\n' + "Url: " + article['url'] + "\n"
         return message
 
 
