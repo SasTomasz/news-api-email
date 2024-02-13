@@ -27,6 +27,7 @@ This is a message from news-api-email
         server.login(email_sender, password)
         server.sendmail(email_sender, email_receiver, message)
         server.quit()
+        print("Email was sent successfully")
         return True
     except Exception as e:
         print(e)
