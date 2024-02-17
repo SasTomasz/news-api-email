@@ -2,6 +2,10 @@ import smtplib
 import ssl
 from dotenv import dotenv_values
 
+import logger_utils
+
+logger = logger_utils.logger
+
 
 def send_email(msg_content=None):
     env = dotenv_values(".env")
@@ -27,10 +31,10 @@ This is a message from news-api-email
         server.login(email_sender, password)
         server.sendmail(email_sender, email_receiver, message)
         server.quit()
-        print("Email was sent successfully")
+        logger.info("Email was sent successfully")
         return True
     except Exception as e:
-        print(e)
+        logger.error(e)
         return False
 
 
